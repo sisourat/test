@@ -1,9 +1,12 @@
 module CFL_mod
+!> this module calculates the CFL number
   use :: types_mod, only: dp
   implicit none
 
   contains
 
+!> calculates the CFL number
+!> \( \text{CFL} = \kappa\frac{\Delta t}{\Delta x^2} \)
   subroutine fd1d_heat_explicit_cfl(k, t_num, t_min, t_max, x_num, x_min, &
     x_max, cfl)
 
@@ -16,7 +19,9 @@ module CFL_mod
     integer, intent(in) :: x_num
     real (kind=dp), intent(in) :: x_min
     real (kind=dp), intent(in) :: x_max
+!> calculated CFL number
     real (kind=dp), intent(out) :: cfl
+!> the heat constant \( \kappa \)
 
     real (kind=dp) :: dx
     real (kind=dp) :: dt

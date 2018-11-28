@@ -1,4 +1,8 @@
 program fd1d_heat_explicit_prb
+!> SISOURAT, Nicolas
+!> Solves the one dimensional heat diffusion equation
+!> \( \frac{\partial H}{\partial t}
+!> - \kappa\frac{\partial^{2} H}{\partial x^{2}} = f(x) \)
   use :: types_mod, only: dp
   use CFL_mod
   use IO_mod
@@ -102,9 +106,10 @@ program fd1d_heat_explicit_prb
   end do
 
 ! write data to files
-  call r8mat_write('h_test01.txt', hmat)
-  call r8vec_write('t_test01.txt', t)
-  call r8vec_write('x_test01.txt', x)
+!  call r8mat_write('h_test01.txt', hmat)
+!  call r8vec_write('t_test01.txt', t)
+!  call r8vec_write('x_test01.txt', x)
+  call r8mat_write('h_test01.nc', hmat,t,x)
 
   deallocate(h,h_new,t,x,hmat)
 
